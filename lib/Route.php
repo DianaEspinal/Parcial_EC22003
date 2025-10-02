@@ -1,5 +1,19 @@
 <?php
-public static function dispatch(){
+namespace lib;
+
+class Route {
+    private static $routes[];
+    private static $URL_BASE = "Parcial2_EC22003/public";
+    public static function get($uri, $callback) {
+        self::$routes["GET"][self::$URL_BASE.$uri]=$callback;
+    }
+
+    public static function post($uri, $callback) {
+        self::$routes["POST"][self::$URL_BASE.$uri]=$callback;
+    }
+
+
+    public static function dispatch(){
        $uri = $_SERVER["REQUEST_URI"];
      
        $method = $_SERVER["REQUEST_METHOD"];
@@ -43,4 +57,6 @@ public static function dispatch(){
        echo "404";
    }
 }
+
+
 ?>
